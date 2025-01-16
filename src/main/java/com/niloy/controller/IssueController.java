@@ -5,6 +5,7 @@ import com.niloy.modal.IssueDTO;
 import com.niloy.modal.User;
 import com.niloy.request.IssueRequest;
 import com.niloy.response.AuthResponse;
+import com.niloy.response.MessageResponse;
 import com.niloy.service.IssueService;
 import com.niloy.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,14 +57,28 @@ public class IssueController {
     }
 
     @DeleteMapping("/{issueId}")
-    public ResponseEntity<AuthResponse> deleteIssue(@PathVariable Long issueId, @RequestHeader("Authorization") String token) throws Exception {
+    public ResponseEntity<MessageResponse> deleteIssue(@PathVariable Long issueId, @RequestHeader("Authorization") String token) throws Exception {
         User user = userService.findUserProfileByJwt(token);
         issueService.deleteIssue(issueId, user.getId());
 
-        AuthResponse res = new AuthResponse();
+        MessageResponse res = new MessageResponse();
         res.setMessage("Issue deleted");
 
         return ResponseEntity.ok(res);
+    }
+
+    @PutMapping("/{issueId}/assignee/{userId}")
+    public ResponseEntity<Issue> addUserToIssue(@PathVariable Long issueId, @PathVariable Long userId) throws Exception {
+        Issue issue = issueService.addUserToIssue(issueId, userId);
+
+        return ResponseEntity.ok(issue);
+    }
+
+    @PutMapping("/{issueId}/assignee/{status}")
+    public ResponseEntity<Issue> updateIssueStatus(@PathVariable String status, @PathVariable Long issueId) throws Exception {
+        Issue issue = issueService.updateStatus(issueId, status);
+
+        return ResponseEntity.ok(issue);
     }
 
 
