@@ -29,7 +29,7 @@ public class IssueController {
         return ResponseEntity.ok(issueService.getIssueById(issueId));
     }
 
-    @GetMapping("/project/{issueId}")
+    @GetMapping("/project/{projectId}")
     public ResponseEntity<List<Issue>> getIssueByProjectId(@PathVariable Long projectId) throws Exception {
         return ResponseEntity.ok(issueService.getIssueByProjectId(projectId));
     }
@@ -74,7 +74,7 @@ public class IssueController {
         return ResponseEntity.ok(issue);
     }
 
-    @PutMapping("/{issueId}/assignee/{status}")
+    @PutMapping("/{issueId}/status/{status}")
     public ResponseEntity<Issue> updateIssueStatus(@PathVariable String status, @PathVariable Long issueId) throws Exception {
         Issue issue = issueService.updateStatus(issueId, status);
 

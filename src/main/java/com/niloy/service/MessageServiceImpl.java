@@ -26,7 +26,7 @@ public class MessageServiceImpl implements MessageService {
     @Override
     public Message sendMessage(Long senderId, Long projectId, String content) throws Exception {
         User sender = userRepository.findById(senderId)
-                .orElseThrow(()->new Exception("User not found with id " + senderId));
+                .orElseThrow(() -> new Exception("User not found with id " + senderId));
 
         Chat chat = projectService.getProjectById(projectId).getChat();
 

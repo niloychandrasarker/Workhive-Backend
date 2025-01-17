@@ -60,15 +60,16 @@ public class ProjectController {
 
     ) throws Exception {
         User user = userService.findUserProfileByJwt(jwt);
-        Project createdproject=projectService.createProject(project, user);
+        Project createdproject=projectService.createProject(project,user);
         return new ResponseEntity<>(createdproject, HttpStatus.OK);
     }
 
     @PatchMapping("/{projectId}")
     public ResponseEntity<Project>updateProject(
             @PathVariable Long projectId,
-            @RequestHeader("Authorization") String jwt,
-            @RequestBody  Project project
+            @RequestBody  Project project,
+            @RequestHeader("Authorization") String jwt
+
 
     ) throws Exception {
         User user = userService.findUserProfileByJwt(jwt);
@@ -114,8 +115,7 @@ public class ProjectController {
     @PostMapping("/invite")
     public ResponseEntity<MessageResponse>inviteProject(
             @RequestBody InviteRequest req,
-            @RequestHeader("Authorization") String jwt,
-            @RequestBody  Project project
+            @RequestHeader("Authorization") String jwt
 
     ) throws Exception {
         User user = userService.findUserProfileByJwt(jwt);
@@ -124,11 +124,10 @@ public class ProjectController {
         return new ResponseEntity<>(res, HttpStatus.OK);
     }
 
-    @GetMapping("accept_invitation")
+    @GetMapping("/accept_invitation")
     public ResponseEntity<Invitation>acceptInviteProject(
             @RequestParam String token,
-            @RequestHeader("Authorization") String jwt,
-            @RequestBody  Project project
+            @RequestHeader("Authorization") String jwt
 
     ) throws Exception {
         User user = userService.findUserProfileByJwt(jwt);
