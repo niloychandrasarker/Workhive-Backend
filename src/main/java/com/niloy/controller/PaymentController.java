@@ -53,7 +53,7 @@ public class PaymentController {
             notify.put("email",true);
             paymentLinkRequest.put("notify",notify);
 
-            paymentLinkRequest.put("callback url","http://localhost:5173/upgrade_plan/success?playType"+planType);
+            paymentLinkRequest.put("callback url","http://localhost:5173/upgrade_plan/success?playType="+planType);
 
             PaymentLink payment = razorpay.paymentLink.create(paymentLinkRequest);
             String paymentLinkId = payment.get("id");
