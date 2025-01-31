@@ -31,4 +31,5 @@ public class Chat {
 
     @ManyToMany
     private List<User> users = new ArrayList<>();
+    
 }
