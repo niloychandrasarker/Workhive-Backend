@@ -11,7 +11,7 @@ public class WebConfig implements WebMvcConfigurer {
     public void addCorsMappings(CorsRegistry registry) {
         // Global CORS configuration
         registry.addMapping("/**")  // Apply CORS to all endpoints
-                .allowedOrigins("http://localhost:3000", "https://workhive-niloy.vercel.app")  // Specify allowed origins
+                .allowedOrigins("*")  // Specify allowed origins
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")  // Allowed HTTP methods
                 .allowedHeaders("*")  // Allow all headers
                 .allowCredentials(true)  // Allow credentials (cookies, authorization headers)
