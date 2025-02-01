@@ -29,7 +29,7 @@ public class InvitationServiceImpl implements InvitationService {
 
         invitationRepository.save(invitation);
 
-        String invitationLink = "https://personal-agnella-devwithniloy-6b987210.koyeb.app:5173/accept_invitation?token=" + invitationtoken;
+        String invitationLink = "https://personal-agnella-devwithniloy-6b987210.koyeb.app/accept_invitation?token=" + invitationtoken;
         emailService.sendEmailWithToken(email, invitationLink);
     }
 
