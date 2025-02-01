@@ -9,6 +9,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Table(
+        name = "_user"
+)
 @Data
 public class User {
     @Id
