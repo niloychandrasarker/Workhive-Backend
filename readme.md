@@ -59,9 +59,4 @@ Workhive is a **full-stack project management platform** designed to help teams 
 🔎 **Search & Filter** – Implement advanced search and filtering options.  
 📱 **Responsive Design** – Works seamlessly on all devices.
 
-## 🚀 Getting Started
 
-### 1️⃣ Clone the Repository
-```bash
-git clone https://github.com/your-username/workhive.git
-cd workhive
